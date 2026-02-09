@@ -1,0 +1,18 @@
+.skill-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.skill-icons img {
+    filter: grayscale(20%);
+    transition: transform 0.2s, filter 0.2s;
+    cursor: pointer;
+}
+
+.skill-icons img:hover {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+}
