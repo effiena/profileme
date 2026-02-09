@@ -68,6 +68,62 @@ section { padding:60px 20px; }
     #top .intro { padding-left:0; margin-top:20px; }
     .project-box { flex:1 1 100%; }
 }
+
+/* ROUND PHOTO WITH PURPLE-PINK GLOW */
+.profile-img {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex:1;
+}
+
+.photo-glow {
+    position:relative;
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* glowing animated ring */
+.photo-glow::before {
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    background: linear-gradient(45deg, #c77dff, #ff4ecd, #c77dff);
+    filter: blur(12px);
+    opacity:0.8;
+    animation: rotateGlow 6s linear infinite;
+}
+
+/* inner white border */
+.photo-glow::after {
+    content:"";
+    position:absolute;
+    inset:3px;
+    border-radius:50%;
+    background:white;
+    z-index:1;
+}
+
+/* image */
+.photo-glow img {
+    position:relative;
+    width:200px;
+    height:200px;
+    object-fit:cover;
+    border-radius:50%;
+    z-index:2;
+}
+
+/* animation */
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -85,10 +141,11 @@ section { padding:60px 20px; }
 
 <!-- Hero Section -->
 <section id="top">
-    <div class="container" style="display:flex; flex-wrap:wrap; align-items:center;">
-        <div class="profile-img" style="flex:1;">
-            <img src="images/myphoto.jpeg" alt="Fida's Photo">
-        </div>
+<div class="profile-img">
+    <div class="photo-glow">
+        <img src="images/myphoto.jpeg" alt="Fida Photo">
+    </div>
+</div>
         <div class="intro" style="flex:2;">
             <h1>Hello, I'm <strong>Fida</strong></h1>
             <p>With nearly 15 years in pharmaceutical services, I now focus on website development, programming, and data analytics. I combine operational expertise with technical skills to create innovative digital projects.</p>
