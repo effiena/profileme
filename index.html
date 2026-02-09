@@ -1,329 +1,238 @@
 <!DOCTYPE HTML>
-<!--
-	Miniport by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Miniport by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fida's Portfolio</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styling */
+        body { font-family: 'Arial', sans-serif; margin:0; padding:0; line-height:1.6; }
+        h1,h2,h3 { margin-bottom: 0.5em; }
+        a { text-decoration: none; color: #007BFF; }
+        a:hover { color: #0056b3; }
+        section { padding: 60px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="#top">About Me</a></li>
-					<li><a href="#work">Work</a></li>
-					<li><a href="#portfolio">Portfolio</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
+        /* Hero Section */
+        #top { display:flex; flex-wrap:wrap; align-items:center; background: #f5f5f5; padding:60px 20px; }
+        #top img { border-radius: 10px; max-width:100%; }
+        #top .intro { flex:1; padding-left:40px; }
+        #top .intro p { margin-bottom:20px; }
 
-<!-- Home / About Me -->
-<!-- Technical Skills & Projects -->
-<section id="skills-projects">
-    <h3>Technical Skills & Projects</h3>
+        /* Interactive Cards */
+        #interactive-cards { background:#fff; text-align:center; }
+        .cards-container { position:relative; overflow:hidden; padding:40px 0; }
+        .cards-wrapper { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:20px; padding:20px; }
+        .cards-wrapper::-webkit-scrollbar { height: 8px; }
+        .cards-wrapper::-webkit-scrollbar-thumb { background: #888; border-radius:4px; }
+        .card { flex:0 0 300px; background:#f0f0f0; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+        .cards-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.2); border:none; padding:10px 15px; border-radius:50%; cursor:pointer; z-index:10; color:#fff; font-size:1.2rem; }
+        .cards-btn.left { left:10px; }
+        .cards-btn.right { right:10px; }
 
-    <!-- Skill Logos -->
-    <p>Technologies and tools I work with:</p>
-    <div class="skill-icons">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" width="50" title="Python">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flask.svg" alt="Flask" width="50" title="Flask">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tkinter.svg" alt="Tkinter" width="50" title="Tkinter">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/railway.svg" alt="Railway" width="50" title="Railway">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/relume.svg" alt="Relume" width="50" title="Relume">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" width="50" title="GitHub">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sqlite.svg" alt="SQL" width="50" title="SQL">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg" alt="Excel" width="50" title="Excel">
-    </div>
+        /* Projects */
+        .projects-grid { display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; }
+        .project-box { flex:1 1 calc(50% - 20px); background:#f5f5f5; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+        .project-box iframe { width:100%; border-radius:10px; margin-top:10px; }
+        .project-box a.button { display:inline-block; margin-top:10px; padding:8px 12px; background:#007BFF; color:#fff; border-radius:5px; }
 
-    <!-- Projects -->
-    <ul style="margin-top:20px;">
-        <li>Designed and built a fully functional <strong>MP3 Player</strong> inspired by Spotify with playlist management and playback controls.</li>
-        <li>Developed a <strong>Calendar Analytics Tool</strong> integrating Python, SQL, and Google Forms for event tracking and visualization.</li>
-        <li>Created multiple web projects using <strong>Relume, GitHub, Railway</strong>, integrating Python, CSS, and JavaScript for interactive, responsive sites.</li>
-        <li>Built the <strong>Cuddly Garbanzo Website</strong> hosted on GitHub Pages: <a href="https://effiena.github.io/cuddly-garbanzo/" target="_blank">View Website</a>.</li>
+        /* Portfolio */
+        #portfolio .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px; }
+        .portfolio-grid img { width:100%; border-radius:10px; }
+
+        /* Contact */
+        #contact form { display:grid; gap:15px; }
+        #contact input, #contact textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; }
+        #contact .actions { display:flex; gap:10px; }
+        #contact .actions input { flex:1; cursor:pointer; }
+
+        /* Social Icons */
+        .social { display:flex; gap:10px; justify-content:center; padding:20px 0; }
+        .social a { font-size:1.5rem; color:#555; }
+        .social a:hover { color:#007BFF; }
+
+        /* Responsive */
+        @media(max-width:768px){
+            #top { flex-direction:column; text-align:center; }
+            #top .intro { padding-left:0; margin-top:20px; }
+            .project-box { flex:1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="nav">
+    <ul class="container">
+        <li><a href="#top">About Me</a></li>
+        <li><a href="#interactive-cards">Background</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
+</nav>
+
+<!-- Hero Section -->
+<section id="top">
+    <div class="container" style="display:flex; flex-wrap:wrap; align-items:center;">
+        <div class="profile-img" style="flex:1;">
+            <img src="images/myphoto.jpeg" alt="Fida's Photo">
+        </div>
+        <div class="intro" style="flex:2;">
+            <h1>Hello, I'm <strong>Fida</strong></h1>
+            <p>With nearly 15 years in pharmaceutical services, I now focus on website development, programming, and data analytics. I combine operational expertise with technical skills to create innovative digital projects.</p>
+            <a href="#interactive-cards" class="button">Explore My Background</a>
+        </div>
+    </div>
 </section>
-<article id="top" class="wrapper style1">
-    <div class="container">
-        <div class="row">
-            <!-- Profile Image -->
-            <div class="col-4 col-5-large col-12-medium">
-                <span class="image fit">
-                    <img src="images/myphoto.jpeg" alt="Fida's Photo" />
-                </span>
+
+<!-- Interactive Cards -->
+<section id="interactive-cards">
+    <h2>Explore My Background</h2>
+    <p>Swipe or click arrows to view Education, Professional Experience, Technical Skills, and Current Focus.</p>
+
+    <div class="cards-container">
+        <button class="cards-btn left" onclick="scrollCards(-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="cards-wrapper">
+            <!-- Education Card -->
+            <div class="card">
+                <h3>Education</h3>
+                <ul>
+                    <li>BSc in Computer Networking (Ongoing) – UiTM Shah Alam</li>
+                    <li>Diploma in Pharmacy – UiTM Penang, 2011</li>
+                </ul>
             </div>
-
-            <!-- About Me Content -->
-            <div class="col-8 col-7-large col-12-medium">
-                <header>
-                    <h1>Hello. I am <strong>Fida</strong>.</h1>
-                    <p>With nearly 15 years in pharmaceutical services, I am now transitioning into website development, programming, and data analytics. I combine operational expertise with technical skills to create functional and innovative digital projects.</p>
-                </header>
-
-                <!-- Education -->
-                <section>
-                    <h3>Education</h3>
-                    <ul>
-                        <li>Bachelor of Science in Computer Networking (Ongoing) – UiTM Shah Alam</li>
-                        <li>Diploma in Pharmacy – UiTM Penang, 2011</li>
-                    </ul>
-                </section>
-
-                <!-- Professional Experience -->
-                <section>
-                    <h3>Professional Experience</h3>
-                    <ul>
-                        <li><strong>Senior Pharmacy Technician</strong>, Beacon Speacialist Center (2010-2012) SimeDarby Medical Center (2012-2016) Singapore (2016–2023)
-                            <ul>
-                                <li>Managed home delivery medication cycles for patients</li>
-                                <li>Supervised pharmacy operations and inventory</li>
-                                <li>Leveraged data tracking to optimize workflow efficiency</li>
-                            </ul>
-                        </li>
-                        <li>Nearly 15 years of experience in pharmaceutical services</li>
-                    </ul>
-                </section>
-
-                <!-- Technical Skills & Projects -->
-                <section>
-                    <h3>Technical Skills & Projects</h3>
-                    <ul>
-                        <li><strong>Programming:</strong> Python, CSS, Java, JSON</li>
-                        <li><strong>Web Development:</strong> Relume, Railway, GitHub</li>
-                        <li><strong>Database & Analytics:</strong> SQL, Excel</li>
-                        <li><strong>Key Projects:</strong>
-                            <ul>
-                                <li>Designed and built a fully functional <strong>MP3 Player Streaming </strong> SOUNDIO Music App</li>
-                                <li>Developed <strong>Event Planner Analytics Tools</strong> and <strong>Google Form integrations For Customer Feedbacks and Satisfaction</strong></li>
-                                <li>Ongoing creative and digital projects to strengthen technical skills</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Current Focus -->
-                <section>
-                    <h3>Current Focus</h3>
-                    <ul>
-                        <li>Advancing website development and data analytics skills</li>
-                        <li>Managing Airbnb host operations: data tracking & performance monitoring</li>
-                        <li>Exploring creative digital projects to enhance technical expertise</li>
-                    </ul>
-                </section>
-
-                <a href="#work" class="button large scrolly">Learn about what I do</a>
+            <!-- Experience Card -->
+            <div class="card">
+                <h3>Professional Experience</h3>
+                <ul>
+                    <li>Senior Pharmacy Technician, Singapore (2016–2023)
+                        <ul>
+                            <li>Managed home delivery medication cycles</li>
+                            <li>Supervised pharmacy operations & inventory</li>
+                            <li>Optimized workflow efficiency using data tracking</li>
+                        </ul>
+                    </li>
+                    <li>Nearly 15 years in pharmaceutical services</li>
+                </ul>
+            </div>
+            <!-- Skills & Projects Card -->
+            <div class="card">
+                <h3>Technical Skills & Projects</h3>
+                <div class="skill-icons" style="display:flex; gap:5px; flex-wrap:wrap; justify-content:center; margin:10px 0;">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" title="Python" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flask.svg" alt="Flask" title="Flask" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tkinter.svg" alt="Tkinter" title="Tkinter" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/railway.svg" alt="Railway" title="Railway" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/relume.svg" alt="Relume" title="Relume" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" title="GitHub" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sqlite.svg" alt="SQL" title="SQL" width="40">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg" alt="Excel" title="Excel" width="40">
+                </div>
+                <ul>
+                    <li>MP3 Player – SOUNDIO Music App</li>
+                    <li>Calendar Analytics Tool & Google Forms Integration</li>
+                    <li>Cuddly Garbanzo Website – <a href="https://effiena.github.io/cuddly-garbanzo/" target="_blank">View Website</a></li>
+                </ul>
+            </div>
+            <!-- Current Focus Card -->
+            <div class="card">
+                <h3>Current Focus</h3>
+                <ul>
+                    <li>Advancing website development & data analytics skills</li>
+                    <li>Managing Airbnb host operations</li>
+                    <li>Ongoing creative digital projects</li>
+                </ul>
             </div>
         </div>
+        <button class="cards-btn right" onclick="scrollCards(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
-</article>
+</section>
 
-		<!-- Work -->
-			<article id="work" class="wrapper style2">
-				<div class="container">
-					<header>
-						<h2>Here's all the stuff I do.</h2>
-						<p>Odio turpis amet sed consequat eget posuere consequat.</p>
-					</header>
-					<div class="row aln-center">							
-<!-- Work -->
-<article id="work" class="wrapper style2">
+<!-- Projects Section -->
+<section id="projects">
     <div class="container">
-        <header>
-            <h2>Here's what I do.</h2>
-            <p>Projects that combine creativity, programming, and web development.</p>
-        </header>
-
-        <div class="row aln-center">
+        <h2>Projects</h2>
+        <div class="projects-grid">
             <!-- MP3 Player -->
-            <div class="col-4 col-6-medium col-12-small">
-                <section class="box style1">
-                    <span class="icon solid featured fa-music notes-retro"></span>
-                    <h2>MP3 Player Project</h2>
-                    <p>Designed and built a fully functional MP3 player inspired by Spotify. Features playlist management, playback controls, and a responsive web interface.</p>
-                    <iframe 
-                        src="https://soundio-production.up.railway.app/" 
-                        width="100%" 
-                        height="400px" 
-                        style="border:2px solid #ccc; border-radius:10px; margin-top:10px;">
-                    </iframe>
-                    <a href="https://soundio-production.up.railway.app/" target="_blank" class="button small">Open Full Player</a>
-                </section>
+            <div class="project-box">
+                <h3>MP3 Player – SOUNDIO</h3>
+                <p>Responsive MP3 player with playlist management and playback controls.</p>
+                <iframe src="https://soundio-production.up.railway.app/" height="300"></iframe>
+                <a href="https://soundio-production.up.railway.app/" target="_blank" class="button">Open Full Player</a>
             </div>
 
-            <!-- Calendar Analytics Tool -->
-            <div class="col-4 col-6-medium col-12-small">
-                <section class="box style1">
-                    <span class="icon solid featured fa-calendar-alt"></span>
-                    <h3>Calendar Analytics Tool</h3>
-                    <p>Built a custom calendar analytics system using Python, SQL, and Google Forms. Tracks events, visualizes data, and provides actionable insights.</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScmIW_sD23cx9MERTA-_GPV7obzFYkUn5ZHNxVMe_Be5dsQyw/viewform" target="_blank" class="button small">See Form</a>
-                </section>
+            <!-- Calendar Analytics -->
+            <div class="project-box">
+                <h3>Calendar Analytics Tool</h3>
+                <p>Event tracking, data visualization, and actionable insights using Python, SQL, and Google Forms.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScmIW_sD23cx9MERTA-_GPV7obzFYkUn5ZHNxVMe_Be5dsQyw/viewform" target="_blank" class="button">See Form</a>
             </div>
 
-            <!-- Web Development Portfolio -->
-            <div class="col-4 col-6-medium col-12-small">
-                <section class="box style1">
-                    <span class="icon featured fa-laptop-code"></span>
-                    <h3>Web Development Projects</h3>
-                    <p>Developed multiple web projects using Relume, GitHub, and Railway, integrating Python, CSS, and JavaScript for interactive, responsive sites.</p>
-                    <a href="#portfolio" class="button small scrolly">View Portfolio</a>
-                </section>
+            <!-- Web Development -->
+            <div class="project-box">
+                <h3>Web Development Projects</h3>
+                <p>Responsive websites using Relume, GitHub, Railway, Python, CSS, and JavaScript.</p>
+                <a href="#portfolio" class="button">View Portfolio</a>
             </div>
 
-            <!-- GitHub Pages Project -->
-            <div class="col-4 col-6-medium col-12-small">
-                <section class="box style1">
-                    <span class="icon solid featured fa-globe"></span>
-                    <h3>Cuddly Garbanzo Website</h3>
-                    <p>A creative web project hosted on GitHub Pages, demonstrating front-end development skills with responsive design, interactive UI, and clean coding practices.</p>
-                    <a href="https://effiena.github.io/cuddly-garbanzo/" target="_blank" class="button small">Visit Website</a>
-                </section>
+            <!-- Cuddly Garbanzo -->
+            <div class="project-box">
+                <h3>Cuddly Garbanzo Website</h3>
+                <p>Hosted on GitHub Pages showcasing responsive UI and front-end development skills.</p>
+                <a href="https://effiena.github.io/cuddly-garbanzo/" target="_blank" class="button">Visit Website</a>
             </div>
         </div>
-
-        <footer>
-            <p>Explore more projects and technical achievements below.</p>
-            <a href="#portfolio" class="button large scrolly">See some of my recent work</a>
-        </footer>
     </div>
-</article>
-        <footer>
-            <p>Explore more projects and technical achievements below.</p>
-            <a href="#portfolio" class="button large scrolly">See some of my recent work</a>
-        </footer>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <img src="images/pic01.jpg" alt="">
+            <img src="images/pic03.jpg" alt="">
+            <img src="images/pic04.jpg" alt="">
+            <img src="images/pic05.jpg" alt="">
+            <img src="images/pic06.jpg" alt="">
+            <img src="images/pic07.jpg" alt="">
+        </div>
     </div>
-</article>
-		<!-- Portfolio -->
-			<article id="portfolio" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2>Here’s some stuff I made recently.</h2>
-						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
-					</header>
-					<div class="row">
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<h3><a href="#">Magna feugiat</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
+</section>
 
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<h3><a href="#">Lorem ipsum</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-								<h3><a href="#">Tempus dolore</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-								<h3><a href="#">Feugiat aliquam</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-								<h3><a href="#">Sed amet ornare</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-					</div>
-					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<a href="#contact" class="button large scrolly">Get in touch with me</a>
-					</footer>
-				</div>
-			</article>
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <form method="post" action="#">
+            <input type="text" name="name" placeholder="Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="subject" placeholder="Subject">
+            <textarea name="message" rows="5" placeholder="Message"></textarea>
+            <div class="actions">
+                <input type="submit" value="Send Message">
+                <input type="reset" value="Clear Form">
+            </div>
+        </form>
+        <div class="social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</section>
 
-		<!-- Contact -->
-			<article id="contact" class="wrapper style4">
-				<div class="container medium">
-					<header>
-						<h2>Have me make stuff for you.</h2>
-						<p>Ornare nulla proin odio consequat sapien vestibulum ipsum.</p>
-					</header>
-					<div class="row">
-						<div class="col-12">
-							<form method="post" action="#">
-								<div class="row">
-									<div class="col-6 col-12-small">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="text" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<input type="text" name="subject" id="subject" placeholder="Subject" />
-									</div>
-									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" /></li>
-											<li><input type="reset" value="Clear Form" class="alt" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="col-12">
-							<hr />
-							<h3>Find me on ...</h3>
-							<ul class="social">
-								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-								<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-								<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
-								<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<!--
-								<li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-								<li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-								<li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-								<li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-								<li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-								<li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-								<li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li>
-								-->
-							</ul>
-							<hr />
-						</div>
-					</div>
-					<footer>
-						<ul id="copyright">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
-				</div>
-			</article>
+<script>
+    const wrapper = document.querySelector('.cards-wrapper');
+    function scrollCards(direction) {
+        const cardWidth = wrapper.querySelector('.card').offsetWidth + 20;
+        wrapper.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+</script>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+</body>
 </html>
