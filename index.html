@@ -71,7 +71,7 @@ section { padding:60px 20px; }
     .project-box { flex:1 1 100%; }
 }
 
-/* ROUND PHOTO WITH PURPLE-PINK GLOW */
+/* ROUND PHOTO WITH PURPLE-PINK GLOW 
 .profile-img {
     display:flex;
     justify-content:center;
@@ -89,7 +89,7 @@ section { padding:60px 20px; }
     align-items:center;
 }
 
-/* glowing animated ring */
+ glowing animated ring 
 .photo-glow::before {
     content:"";
     position:absolute;
@@ -101,7 +101,7 @@ section { padding:60px 20px; }
     animation: rotateGlow 6s linear infinite;
 }
 
-/* inner white border */
+/* inner white border 
 .photo-glow::after {
     content:"";
     position:absolute;
@@ -111,7 +111,7 @@ section { padding:60px 20px; }
     z-index:1;
 }
 
-/* image */
+/* image 
 .photo-glow img {
     position:relative;
     width:200px;
@@ -127,7 +127,7 @@ section { padding:60px 20px; }
     100% { transform: rotate(360deg); }
 }
 
-/* ===== ROUND PHOTO WITH GLOW ===== */
+/* ===== ROUND PHOTO WITH GLOW ===== 
 
 .profile-img{
     display:flex;
@@ -135,7 +135,7 @@ section { padding:60px 20px; }
     align-items:center;
 }
 
-/* outer glow ring */
+/* outer glow ring 
 .photo-ring{
     position:relative;
     width:220px;
@@ -146,7 +146,7 @@ section { padding:60px 20px; }
     align-items:center;
 }
 
-/* glowing circle */
+/* glowing circle 
 .photo-ring::before{
     content:"";
     position:absolute;
@@ -158,7 +158,7 @@ section { padding:60px 20px; }
     animation:spin 8s linear infinite;
 }
 
-/* white inner border */
+/* white inner border 
 .photo-ring::after{
     content:"";
     position:absolute;
@@ -168,12 +168,12 @@ section { padding:60px 20px; }
     z-index:1;
 }
 
-/* IMAGE */
+/* IMAGE 
 .photo-ring img{
     width:190px;
     height:190px;
     object-fit:cover;
-    border-radius:50% !important;   /* forces round */
+    border-radius:50% !important;   /* forces round *
     position:relative;
     z-index:2;
 }
@@ -182,6 +182,63 @@ section { padding:60px 20px; }
 @keyframes spin{
     0%{transform:rotate(0)}
     100%{transform:rotate(360deg)}
+}
+    /* ===== PERFECT ROUND PHOTO WITH PURPLE-PINK GLOW ===== */
+
+.profile-img{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* OUTER GLOW CIRCLE */
+.avatar-glow{
+    position:relative;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* rotating glow */
+.avatar-glow::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:linear-gradient(45deg,#c77dff,#ff4ecd,#c77dff);
+    filter:blur(16px);
+    opacity:0.85;
+    animation:spinGlow 8s linear infinite;
+}
+
+/* inner border circle */
+.avatar-glow::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border-radius:50%;
+    background:white;
+    z-index:1;
+}
+
+/* IMAGE — EXACT FIT */
+.avatar-glow img{
+    position:relative;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    z-index:2;
+}
+
+/* animation */
+@keyframes spinGlow{
+    0%{ transform:rotate(0deg); }
+    100%{ transform:rotate(360deg); }
 }
 </style>
 </head>
@@ -201,8 +258,8 @@ section { padding:60px 20px; }
 <!-- Hero Section -->
 <section id="top">
 <div class="profile-img">
-    <div class="photo-glow">
-        <img src="images/myphoto.jpeg" alt="Fida Photo">
+    <div class="avatar-glow">
+        <img src="images/myphoto.jpeg" alt="Fida">
     </div>
 </div>
         <div class="intro" style="flex:2;">
