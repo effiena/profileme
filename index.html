@@ -1,65 +1,74 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fida's Portfolio</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* General Styling */
-        body { font-family: 'Arial', sans-serif; margin:0; padding:0; line-height:1.6; }
-        h1,h2,h3 { margin-bottom: 0.5em; }
-        a { text-decoration: none; color: #007BFF; }
-        a:hover { color: #0056b3; }
-        section { padding: 60px 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fida's Portfolio</title>
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* General Styling */
+body { font-family: 'Arial', sans-serif; margin:0; padding:0; line-height:1.6; background:#f9f9f9; color:#333; }
+h1,h2,h3 { margin-bottom:0.5em; }
+a { text-decoration:none; color:#007BFF; }
+a:hover { color:#0056b3; }
+section { padding:60px 20px; }
+.container { max-width:1200px; margin:0 auto; }
 
-        /* Hero Section */
-        #top { display:flex; flex-wrap:wrap; align-items:center; background: #f5f5f5; padding:60px 20px; }
-        #top img { border-radius: 10px; max-width:100%; }
-        #top .intro { flex:1; padding-left:40px; }
-        #top .intro p { margin-bottom:20px; }
+/* Hero Section */
+#top { display:flex; flex-wrap:wrap; align-items:center; background:#f5f5f5; padding:60px 20px; border-radius:10px; }
+#top img { border-radius:10px; max-width:100%; }
+#top .intro { flex:1; padding-left:40px; }
+#top .intro p { margin-bottom:20px; }
 
-        /* Interactive Cards */
-        #interactive-cards { background:#fff; text-align:center; }
-        .cards-container { position:relative; overflow:hidden; padding:40px 0; }
-        .cards-wrapper { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:20px; padding:20px; }
-        .cards-wrapper::-webkit-scrollbar { height: 8px; }
-        .cards-wrapper::-webkit-scrollbar-thumb { background: #888; border-radius:4px; }
-        .card { flex:0 0 300px; background:#f0f0f0; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-        .cards-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.2); border:none; padding:10px 15px; border-radius:50%; cursor:pointer; z-index:10; color:#fff; font-size:1.2rem; }
-        .cards-btn.left { left:10px; }
-        .cards-btn.right { right:10px; }
+/* Interactive Cards */
+#interactive-cards { text-align:center; }
+.cards-container { position:relative; overflow:hidden; padding:40px 0; }
+.cards-wrapper { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:20px; padding:20px; }
+.cards-wrapper::-webkit-scrollbar { height:8px; }
+.cards-wrapper::-webkit-scrollbar-thumb { background:#888; border-radius:4px; }
+.card { flex:0 0 300px; padding:20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); color:#333; transition:transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform:translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.15); }
 
-        /* Projects */
-        .projects-grid { display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; }
-        .project-box { flex:1 1 calc(50% - 20px); background:#f5f5f5; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-        .project-box iframe { width:100%; border-radius:10px; margin-top:10px; }
-        .project-box a.button { display:inline-block; margin-top:10px; padding:8px 12px; background:#007BFF; color:#fff; border-radius:5px; }
+/* Card Background Colors */
+.card-education { background-color:#ffe6f0; }   /* soft pink */
+.card-experience { background-color:#e6fff0; }  /* soft green */
+.card-skills { background-color:#e6f0ff; }      /* soft blue */
+.card-focus { background-color:#f0e6ff; }       /* soft purple */
 
-        /* Portfolio */
-        #portfolio .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px; }
-        .portfolio-grid img { width:100%; border-radius:10px; }
+/* Cards Buttons */
+.cards-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.3); border:none; padding:10px 15px; border-radius:50%; cursor:pointer; z-index:10; color:#fff; font-size:1.2rem; }
+.cards-btn.left { left:10px; }
+.cards-btn.right { right:10px; }
 
-        /* Contact */
-        #contact form { display:grid; gap:15px; }
-        #contact input, #contact textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; }
-        #contact .actions { display:flex; gap:10px; }
-        #contact .actions input { flex:1; cursor:pointer; }
+/* Projects */
+.projects-grid { display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; }
+.project-box { flex:1 1 calc(50% - 20px); background:#f5f5f5; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+.project-box iframe { width:100%; border-radius:10px; margin-top:10px; }
+.project-box a.button { display:inline-block; margin-top:10px; padding:8px 12px; background:#007BFF; color:#fff; border-radius:5px; }
 
-        /* Social Icons */
-        .social { display:flex; gap:10px; justify-content:center; padding:20px 0; }
-        .social a { font-size:1.5rem; color:#555; }
-        .social a:hover { color:#007BFF; }
+/* Portfolio */
+#portfolio .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px; }
+.portfolio-grid img { width:100%; border-radius:10px; }
 
-        /* Responsive */
-        @media(max-width:768px){
-            #top { flex-direction:column; text-align:center; }
-            #top .intro { padding-left:0; margin-top:20px; }
-            .project-box { flex:1 1 100%; }
-        }
-    </style>
+/* Contact */
+#contact form { display:grid; gap:15px; }
+#contact input, #contact textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; }
+#contact .actions { display:flex; gap:10px; }
+#contact .actions input { flex:1; cursor:pointer; }
+
+/* Social Icons */
+.social { display:flex; gap:10px; justify-content:center; padding:20px 0; }
+.social a { font-size:1.5rem; color:#555; }
+.social a:hover { color:#007BFF; }
+
+/* Responsive */
+@media(max-width:768px){
+    #top { flex-direction:column; text-align:center; }
+    #top .intro { padding-left:0; margin-top:20px; }
+    .project-box { flex:1 1 100%; }
+}
+</style>
 </head>
 <body>
 
@@ -96,16 +105,14 @@
     <div class="cards-container">
         <button class="cards-btn left" onclick="scrollCards(-1)"><i class="fas fa-chevron-left"></i></button>
         <div class="cards-wrapper">
-            <!-- Education Card -->
-            <div class="card">
+            <div class="card card-education">
                 <h3>Education</h3>
                 <ul>
                     <li>BSc in Computer Networking (Ongoing) – UiTM Shah Alam</li>
                     <li>Diploma in Pharmacy – UiTM Penang, 2011</li>
                 </ul>
             </div>
-            <!-- Experience Card -->
-            <div class="card">
+            <div class="card card-experience">
                 <h3>Professional Experience</h3>
                 <ul>
                     <li>Senior Pharmacy Technician, Singapore (2016–2023)
@@ -118,8 +125,7 @@
                     <li>Nearly 15 years in pharmaceutical services</li>
                 </ul>
             </div>
-            <!-- Skills & Projects Card -->
-            <div class="card">
+            <div class="card card-skills">
                 <h3>Technical Skills & Projects</h3>
                 <div class="skill-icons" style="display:flex; gap:5px; flex-wrap:wrap; justify-content:center; margin:10px 0;">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" title="Python" width="40">
@@ -135,46 +141,19 @@
                     <li>Cuddly Garbanzo Website – <a href="https://effiena.github.io/cuddly-garbanzo/" target="_blank">View Website</a></li>
                 </ul>
             </div>
-            <!-- Current Focus Card -->
-<section id="background-cards" class="cards-section">
-    <h2>Explore My Background</h2>
-    <div class="cards-container">
-        <div class="card card-education">
-            <h3>Education</h3>
-            <ul>
-                <li>BSc in Computer Networking (Ongoing) – UiTM Shah Alam</li>
-                <li>Diploma in Pharmacy – UiTM Penang, 2011</li>
-            </ul>
+            <div class="card card-focus">
+                <h3>Current Focus</h3>
+                <ul>
+                    <li>Advancing web development & data analytics</li>
+                    <li>Managing Airbnb host operations</li>
+                    <li>Creative digital projects to strengthen skills</li>
+                </ul>
+            </div>
         </div>
-
-        <div class="card card-experience">
-            <h3>Professional Experience</h3>
-            <ul>
-                <li>Senior Pharmacy Technician – Singapore (2016–2023)</li>
-                <li>Managed medication delivery & inventory</li>
-                <li>Nearly 15 years in pharmaceutical services</li>
-            </ul>
-        </div>
-
-        <div class="card card-skills">
-            <h3>Technical Skills & Projects</h3>
-            <ul>
-                <li>Python, Flask, Tkinter, CSS, Java, JSON</li>
-                <li>Relume, Railway, GitHub, SQL, Excel</li>
-                <li>MP3 Player, Calendar Analytics, Cuddly Garbanzo Website</li>
-            </ul>
-        </div>
-
-        <div class="card card-focus">
-            <h3>Current Focus</h3>
-            <ul>
-                <li>Advancing web development & data analytics</li>
-                <li>Managing Airbnb host operations</li>
-                <li>Creative digital projects to strengthen skills</li>
-            </ul>
-        </div>
+        <button class="cards-btn right" onclick="scrollCards(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
+
 <!-- Portfolio Section -->
 <section id="portfolio">
     <div class="container">
@@ -214,12 +193,11 @@
 </section>
 
 <script>
-    const wrapper = document.querySelector('.cards-wrapper');
-    function scrollCards(direction) {
-        const cardWidth = wrapper.querySelector('.card').offsetWidth + 20;
-        wrapper.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-    }
+const wrapper = document.querySelector('.cards-wrapper');
+function scrollCards(direction){
+    const cardWidth = wrapper.querySelector('.card').offsetWidth + 20;
+    wrapper.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+}
 </script>
-
 </body>
 </html>
