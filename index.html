@@ -124,6 +124,63 @@ section { padding:60px 20px; }
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ===== ROUND PHOTO WITH GLOW ===== */
+
+.profile-img{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* outer glow ring */
+.photo-ring{
+    position:relative;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* glowing circle */
+.photo-ring::before{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#c77dff,#ff4ecd,#c77dff);
+    filter:blur(14px);
+    opacity:0.9;
+    animation:spin 8s linear infinite;
+}
+
+/* white inner border */
+.photo-ring::after{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border-radius:50%;
+    background:white;
+    z-index:1;
+}
+
+/* IMAGE */
+.photo-ring img{
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius:50% !important;   /* forces round */
+    position:relative;
+    z-index:2;
+}
+
+/* animation */
+@keyframes spin{
+    0%{transform:rotate(0)}
+    100%{transform:rotate(360deg)}
+}
 </style>
 </head>
 <body>
